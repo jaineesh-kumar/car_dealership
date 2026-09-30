@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}Style Guide - Marlow Motors{% endblock %}
+
+{% block content %}
+<div class="section-wrapper">
+    <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl mb-4">Design System</h1>
+        <p class="text-muted max-w-2xl text-lg">
+            This style guide demonstrates the components and typography used across the Marlow Motors demo site.
+            It ensures a consistent, premium, and editorial look.
+        </p>
+    </div>
+    
+    <!-- Typography -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Typography</h2>
+        <div class="space-y-8 bg-surface p-8 rounded border border-gray-200">
+            <div>
+                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Heading 1 (Fraunces)</span>
+                <h1 class="text-5xl">The quick brown fox jumps over the lazy dog</h1>
+            </div>
+            <div>
+                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Heading 2</span>
+                <h2 class="text-4xl">The quick brown fox jumps over the lazy dog</h2>
+            </div>
+            <div>
+                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Heading 3</span>
+                <h3 class="text-3xl">The quick brown fox jumps over the lazy dog</h3>
+            </div>
+            <div>
+                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Body Text (Instrument Sans)</span>
+                <p class="text-base max-w-3xl leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+            <div>
+                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Tabular Figures (Numbers)</span>
+                <p class="text-2xl tabular-nums tracking-tight">$24,990 <span class="text-muted text-lg line-through ml-2">$26,500</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colors -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Colors</h2>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+            <div class="flex flex-col">
+                <div class="h-24 rounded border border-gray-200 bg-bone mb-2"></div>
+                <span class="font-medium text-sm">Bone</span>
+                <span class="text-muted text-xs">#F5F2EC</span>
+            </div>
+            <div class="flex flex-col">
+                <div class="h-24 rounded border border-gray-200 bg-surface mb-2"></div>
+                <span class="font-medium text-sm">Surface</span>
+                <span class="text-muted text-xs">#FFFFFF</span>
+            </div>
+            <div class="flex flex-col">
+                <div class="h-24 rounded border border-gray-200 bg-ink mb-2"></div>
+                <span class="font-medium text-sm">Ink</span>
+                <span class="text-muted text-xs">#14171A</span>
+            </div>
+            <div class="flex flex-col">
+                <div class="h-24 rounded border border-gray-200 bg-muted mb-2"></div>
+                <span class="font-medium text-sm">Muted</span>
+                <span class="text-muted text-xs">#5C636A</span>
+            </div>
+            <div class="flex flex-col">
+                <div class="h-24 rounded border border-gray-200 bg-copper mb-2"></div>
+                <span class="font-medium text-sm">Copper</span>
+                <span class="text-muted text-xs">#B5562B</span>
+            </div>
+            <div class="flex flex-col">
+                <div class="h-24 rounded border border-gray-200 bg-dark mb-2"></div>
+                <span class="font-medium text-sm">Dark</span>
+                <span class="text-muted text-xs">#14171A</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buttons & Badges -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Buttons & Badges</h2>
+        <div class="flex flex-wrap items-center gap-6 bg-surface p-8 rounded border border-gray-200">
+            <button class="btn-primary">Primary Button</button>
+            <button class="btn-secondary">Secondary Button</button>
+            
+            <div class="h-8 w-px bg-gray-300 mx-2"></div>
+            
+            <span class="badge">Featured</span>
+            <span class="badge bg-green-100 text-green-800 border-green-200">Available</span>
+            <span class="badge bg-red-100 text-red-800 border-red-200">Sold</span>
+        </div>
+    </section>
+    
+    <!-- Forms -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Form Elements</h2>
+        <div class="bg-surface p-8 rounded border border-gray-200 max-w-md">
+            <form class="space-y-4">
+                <div>
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Jane Doe">
+                </div>
+                <div>
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="jane@example.com">
+                </div>
+                <div>
+                    <label class="form-label">Message</label>
+                    <textarea class="form-input" rows="3" placeholder="I'm interested in this car..."></textarea>
+                </div>
+                <button type="button" class="btn-primary w-full">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Cards -->
+    <section class="mb-16">
+        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Cards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Sample Car Card -->
+            <div class="card group cursor-pointer hover:shadow-md transition-shadow">
+                <div class="aspect-[4/3] bg-gray-200 relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt="Car" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-2 left-2">
+                        <span class="badge">New Arrival</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="text-xs text-muted mb-1">2021 • 32,000 km • Petrol</div>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-copper transition-colors">Honda Civic VXi</h3>
+                    <div class="text-xl tabular-nums font-medium">$22,500</div>
+                </div>
+            </div>
+            
+            <!-- Sample Feature Card -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="w-12 h-12 rounded-full bg-copper/10 flex items-center justify-center text-copper mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold mb-2">120-Point Inspection</h3>
+                <p class="text-muted text-sm leading-relaxed">Every vehicle is thoroughly checked by certified mechanics before hitting the showroom.</p>
+            </div>
+            
+        </div>
+    </section>
+
+</div>
+{% endblock %}

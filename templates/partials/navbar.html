@@ -1,0 +1,49 @@
+<header class="bg-surface border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="font-heading text-2xl font-bold tracking-tight text-ink">
+                    Marlow<span class="text-copper">Motors</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-ink hover:text-copper px-3 py-2 text-sm font-medium transition-colors">Inventory</a>
+                <a href="#" class="text-ink hover:text-copper px-3 py-2 text-sm font-medium transition-colors">Sell/Trade</a>
+                <a href="#" class="text-ink hover:text-copper px-3 py-2 text-sm font-medium transition-colors">About Us</a>
+                <a href="#" class="text-ink hover:text-copper px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+            </nav>
+            
+            <!-- Contact Actions -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+1234567890" class="text-sm font-medium text-muted hover:text-ink tabular-nums transition-colors">
+                    +1 234 567 890
+                </a>
+                <a href="#" class="btn-primary py-2 px-4 text-sm">
+                    Book Test Drive
+                </a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="flex items-center md:hidden" x-data="{ mobileMenuOpen: false }">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="text-ink hover:text-copper focus:outline-none p-2">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Icon: Menu -->
+                    <svg x-show="!mobileMenuOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Icon: Close -->
+                    <svg x-show="mobileMenuOpen" x-cloak class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Dropdown (Alpine controlled, but handled gracefully if no alpine) -->
+                <!-- Ideally this would be inside x-data scope, moving it to be absolutely positioned below header. -->
+                <!-- For simplicity, placing it here with absolute positioning -->
+            </div>
+        </div>
+    </div>
+</header>
