@@ -15,8 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
+from apps.core.views import HomeView
 
 admin.site.site_header = "Marlow Motors Administration"
 admin.site.site_title = "Marlow Motors Admin Portal"
@@ -24,5 +27,12 @@ admin.site.index_title = "Dealership Management System"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', HomeView.as_view(), name='home'),
+    path('inventory/', include('apps.inventory.urls')),
+    path('leads/', include('apps.leads.urls')),
     path('style-guide/', TemplateView.as_view(template_name='style_guide.html'), name='style_guide'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

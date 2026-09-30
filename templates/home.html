@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Marlow Motors - Premium Pre-owned Vehicles{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 flex items-center justify-center min-h-[80vh]">
+    <div class="text-center z-10 px-6 max-w-4xl mx-auto">
+        <h1 class="text-6xl md:text-8xl mb-6">Find Your Perfect Drive</h1>
+        <p class="text-xl text-muted mb-12 max-w-2xl mx-auto">
+            Discover a curated collection of premium pre-owned vehicles. Fully inspected, certified, and ready for you.
+        </p>
+        
+        <!-- Search Bar -->
+        <div class="bg-surface/80 backdrop-blur-md p-4 rounded-xl border border-border max-w-3xl mx-auto flex flex-col md:flex-row gap-4">
+            <form action="{% url 'inventory' %}" method="GET" class="flex-grow flex flex-col md:flex-row gap-4 w-full">
+                <input type="text" name="brand" placeholder="Search by Brand (e.g. Audi)" class="form-input flex-grow">
+                <button type="submit" class="btn-primary whitespace-nowrap">
+                    <i data-lucide="search" class="w-5 h-5 mr-2"></i> Search Inventory
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Cars -->
+<section class="section-wrapper">
+    <div class="flex justify-between items-end mb-12 border-b border-border pb-6">
+        <div>
+            <h2 class="text-4xl md:text-5xl">Featured Vehicles</h2>
+            <p class="text-muted mt-2">Handpicked selections from our premium inventory.</p>
+        </div>
+        <a href="{% url 'inventory' %}" class="btn-ghost hidden md:inline-flex">View All</a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for car in featured_cars %}
+        <a href="{% url 'car_detail' car.slug %}" class="card group block hover:border-muted transition-colors relative">
+            <div class="aspect-[4/3] bg-surface relative overflow-hidden">
+                {% if car.images.first %}
+                <img src="{{ car.images.first.image.url }}" alt="{{ car.title }}" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                {% else %}
+                <div class="w-full h-full flex items-center justify-center bg-[#101216]">No Image</div>
+                {% endif %}
+                
+                <div class="absolute top-3 left-3">
+                    <span class="badge backdrop-blur-md bg-surface/80">${{ car.price }}</span>
+                </div>
+            </div>
+            <div class="p-5">
+                <div class="flex justify-between items-center text-xs text-muted mb-2">
+                    <span>{{ car.year }}</span>
+                    <span>{{ car.km_driven }} km</span>
+                </div>
+                <h3 class="text-lg font-heading mb-1 group-hover:text-accent transition-colors truncate">{{ car.title }}</h3>
+                <p class="text-sm text-muted">{{ car.fuel|title }} • {{ car.transmission|title }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p class="text-muted col-span-full">No featured cars available at the moment.</p>
+        {% endfor %}
+    </div>
+    <div class="mt-8 text-center md:hidden">
+        <a href="{% url 'inventory' %}" class="btn-ghost w-full">View All</a>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="bg-surface border-y border-border">
+    <div class="section-wrapper">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl mb-4">The Marlow Standard</h2>
+            <p class="text-muted max-w-2xl mx-auto">We don't just sell cars. We deliver peace of mind and an unparalleled ownership experience.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center p-6">
+                <div class="w-16 h-16 rounded-2xl bg-accent/10 text-accent flex items-center justify-center mx-auto mb-6 border border-accent/20">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-heading mb-3">120-Point Inspection</h3>
+                <p class="text-muted leading-relaxed">Every vehicle undergoes a rigorous mechanical and visual inspection by our certified experts.</p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 rounded-2xl bg-accent/10 text-accent flex items-center justify-center mx-auto mb-6 border border-accent/20">
+                    <i data-lucide="award" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-heading mb-3">6-Month Warranty</h3>
+                <p class="text-muted leading-relaxed">Drive away with confidence knowing your purchase is protected by our comprehensive warranty.</p>
+            </div>
+            <div class="text-center p-6">
+                <div class="w-16 h-16 rounded-2xl bg-accent/10 text-accent flex items-center justify-center mx-auto mb-6 border border-accent/20">
+                    <i data-lucide="banknote" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-heading mb-3">Fair Market Pricing</h3>
+                <p class="text-muted leading-relaxed">No haggling, no hidden fees. We offer transparent pricing based on real-time market data.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section-wrapper text-center">
+    <h2 class="text-5xl md:text-7xl mb-6">Ready to upgrade?</h2>
+    <p class="text-xl text-muted mb-10 max-w-2xl mx-auto">Trade in your current vehicle and get a premium valuation towards your next purchase.</p>
+    <a href="{% url 'sell_trade' %}" class="btn-primary text-lg px-8 py-4">Value Your Trade-In</a>
+</section>
+{% endblock %}

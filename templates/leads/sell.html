@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Sell / Trade - Marlow Motors{% endblock %}
+
+{% block content %}
+<div class="section-wrapper max-w-3xl">
+    <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl mb-6">Value Your Trade-In</h1>
+        <p class="text-xl text-muted">
+            Looking to sell or trade your current vehicle? Fill out the details below and our team will get back to you with a competitive offer within 24 hours.
+        </p>
+    </div>
+
+    {% if messages %}
+    <div class="mb-8 p-4 bg-green-900/20 border border-green-500/30 rounded-lg text-green-400 text-center">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="bg-surface p-8 md:p-12 rounded-2xl border border-border">
+        <form method="POST" action="{% url 'sell_trade' %}">
+            {% csrf_token %}
+            
+            <h3 class="text-2xl font-heading mb-8 border-b border-border pb-4">Personal Details</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div>
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="name" required class="form-input" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" required class="form-input" placeholder="+1 (555) 000-0000">
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-heading mb-8 border-b border-border pb-4">Vehicle Details</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div>
+                    <label class="form-label">Brand</label>
+                    <input type="text" name="brand" required class="form-input" placeholder="e.g. BMW">
+                </div>
+                <div>
+                    <label class="form-label">Model</label>
+                    <input type="text" name="model" required class="form-input" placeholder="e.g. 3 Series">
+                </div>
+                <div>
+                    <label class="form-label">Year</label>
+                    <input type="number" name="year" required class="form-input" placeholder="2019">
+                </div>
+                <div>
+                    <label class="form-label">Mileage (km)</label>
+                    <input type="number" name="km" required class="form-input" placeholder="45000">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary w-full text-lg py-4">Submit Request</button>
+            <p class="text-center text-muted text-sm mt-4">By submitting, you agree to our Terms and Conditions.</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

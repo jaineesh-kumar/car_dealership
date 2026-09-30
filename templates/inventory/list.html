@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventory - Marlow Motors{% endblock %}
+
+{% block content %}
+<div class="section-wrapper">
+    <div class="mb-12">
+        <h1 class="text-6xl mb-4">Inventory</h1>
+        <p class="text-muted text-xl">Browse our complete collection of certified vehicles.</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-10">
+        <!-- Sidebar Filter -->
+        <aside class="w-full lg:w-64 flex-shrink-0">
+            <div class="bg-surface p-6 rounded-xl border border-border sticky top-28">
+                <h3 class="text-xl font-heading mb-6 border-b border-border pb-4">Filters</h3>
+                <form action="" method="GET" class="space-y-6">
+                    <div>
+                        <label class="form-label">Brand</label>
+                        <select name="brand" class="form-input bg-[#07080A]">
+                            <option value="">All Brands</option>
+                            {% for b in brands %}
+                            <option value="{{ b.slug }}" {% if request.GET.brand == b.slug %}selected{% endif %}>{{ b.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Fuel Type</label>
+                        <select name="fuel" class="form-input bg-[#07080A]">
+                            <option value="">All Types</option>
+                            <option value="petrol" {% if request.GET.fuel == 'petrol' %}selected{% endif %}>Petrol</option>
+                            <option value="diesel" {% if request.GET.fuel == 'diesel' %}selected{% endif %}>Diesel</option>
+                            <option value="electric" {% if request.GET.fuel == 'electric' %}selected{% endif %}>Electric</option>
+                            <option value="hybrid" {% if request.GET.fuel == 'hybrid' %}selected{% endif %}>Hybrid</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary w-full">Apply Filters</button>
+                    <a href="{% url 'inventory' %}" class="btn-ghost w-full mt-2 text-center">Clear Filters</a>
+                </form>
+            </div>
+        </aside>
+
+        <!-- Car Grid -->
+        <div class="flex-grow">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {% for car in cars %}
+                <a href="{% url 'car_detail' car.slug %}" class="card group block hover:border-muted transition-colors relative">
+                    <div class="aspect-[4/3] bg-[#101216] relative overflow-hidden">
+                        {% if car.images.first %}
+                        <img src="{{ car.images.first.image.url }}" alt="{{ car.title }}" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        {% else %}
+                        <div class="w-full h-full flex items-center justify-center">No Image</div>
+                        {% endif %}
+                        
+                        <div class="absolute top-3 left-3">
+                            <span class="badge backdrop-blur-md bg-surface/80">${{ car.price }}</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-center text-xs text-muted mb-2">
+                            <span>{{ car.year }}</span>
+                            <span>{{ car.km_driven }} km</span>
+                        </div>
+                        <h3 class="text-lg font-heading mb-1 group-hover:text-accent transition-colors truncate">{{ car.title }}</h3>
+                        <p class="text-sm text-muted">{{ car.fuel|title }} • {{ car.transmission|title }}</p>
+                    </div>
+                </a>
+                {% empty %}
+                <div class="col-span-full py-20 text-center bg-surface border border-border rounded-xl">
+                    <i data-lucide="car" class="w-12 h-12 text-muted mx-auto mb-4"></i>
+                    <h3 class="text-xl font-heading mb-2">No cars found</h3>
+                    <p class="text-muted">Try adjusting your filters.</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <div class="mt-12 flex justify-center space-x-2">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.fuel %}&fuel={{ request.GET.fuel }}{% endif %}" class="btn-ghost px-4 py-2">&laquo; Prev</a>
+                {% endif %}
+                
+                <span class="px-4 py-2 border border-border bg-surface rounded text-text font-medium">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.fuel %}&fuel={{ request.GET.fuel }}{% endif %}" class="btn-ghost px-4 py-2">Next &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
