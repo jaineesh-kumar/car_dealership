@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found - Marlow Motors{% endblock %}
+
+{% block content %}
+<div class="section-wrapper py-24 md:py-32 flex items-center justify-center min-h-[70vh]">
+    <div class="text-center">
+        <h1 class="text-8xl md:text-9xl font-heading text-text mb-6">404</h1>
+        <h2 class="text-3xl md:text-4xl font-heading mb-6">Page Not Found</h2>
+        <p class="text-xl text-muted max-w-lg mx-auto mb-10">
+            The page or vehicle you are looking for doesn't exist or has been removed from our inventory.
+        </p>
+        <a href="{% url 'home' %}" class="btn-primary px-8 py-3 text-lg">Return Home</a>
+    </div>
+</div>
+{% endblock %}

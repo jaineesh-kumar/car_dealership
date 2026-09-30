@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /style-guide/
+Allow: /
+
+Sitemap: https://marlowmotors.example.com/sitemap.xml

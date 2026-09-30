@@ -48,7 +48,7 @@
                 <a href="{% url 'car_detail' car.slug %}" class="card group block hover:border-muted transition-colors relative">
                     <div class="aspect-[4/3] bg-[#101216] relative overflow-hidden">
                         {% if car.images.first %}
-                        <img src="{{ car.images.first.image.url }}" alt="{{ car.title }}" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <img src="{{ car.images.first.image.url }}" alt="{{ car.title }}" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" loading="lazy">
                         {% else %}
                         <div class="w-full h-full flex items-center justify-center">No Image</div>
                         {% endif %}

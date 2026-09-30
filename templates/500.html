@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Server Error - Marlow Motors{% endblock %}
+
+{% block content %}
+<div class="section-wrapper py-24 md:py-32 flex items-center justify-center min-h-[70vh]">
+    <div class="text-center">
+        <h1 class="text-8xl md:text-9xl font-heading text-text mb-6">500</h1>
+        <h2 class="text-3xl md:text-4xl font-heading mb-6">Server Error</h2>
+        <p class="text-xl text-muted max-w-lg mx-auto mb-10">
+            Oops! Something went wrong on our end. Our technical team has been notified and is looking into the issue.
+        </p>
+        <a href="{% url 'home' %}" class="btn-primary px-8 py-3 text-lg">Return Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Marlow Motors{% endblock %}</title>
     
+    <!-- SEO & Open Graph Meta Tags -->
+    <meta name="description" content="{% block meta_description %}Premium pre-owned vehicles with a 120-point inspection and 6-month warranty. Find your perfect drive at Marlow Motors.{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Marlow Motors - Premium Pre-owned Vehicles{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Premium pre-owned vehicles with a 120-point inspection and 6-month warranty.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://images.unsplash.com/photo-1562626895-e24c2560b457?w=1200&q=80{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
