@@ -36,4 +36,5 @@ venv.bak/
 *.sqlite3
 
 # Django media files
-media/
+media/*
+!media/UI_PIC/
