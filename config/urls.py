@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
-from apps.core.views import HomeView
+from apps.core.views import HomeView, AboutView, ContactView, PrivacyView, TermsView
 
 admin.site.site_header = "Marlow Motors Administration"
 admin.site.site_title = "Marlow Motors Admin Portal"
@@ -28,6 +28,10 @@ admin.site.index_title = "Dealership Management System"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('privacy/', PrivacyView.as_view(), name='privacy'),
+    path('terms/', TermsView.as_view(), name='terms'),
     path('inventory/', include('apps.inventory.urls')),
     path('leads/', include('apps.leads.urls')),
     path('style-guide/', TemplateView.as_view(template_name='style_guide.html'), name='style_guide'),

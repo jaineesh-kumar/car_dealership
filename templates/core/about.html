@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - Marlow Motors{% endblock %}
+
+{% block content %}
+<div class="section-wrapper py-12 md:py-24 max-w-4xl mx-auto">
+    <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-7xl mb-6">Driven by Excellence</h1>
+        <p class="text-xl text-muted leading-relaxed">
+            Since our founding, Marlow Motors has redefined the pre-owned vehicle experience. We believe that buying a used car shouldn't mean compromising on quality, transparency, or peace of mind.
+        </p>
+    </div>
+
+    <div class="aspect-[21/9] bg-surface rounded-2xl overflow-hidden mb-16 border border-border">
+        <img src="https://images.unsplash.com/photo-1562626895-e24c2560b457?w=1200&q=80" alt="Dealership Showroom" class="w-full h-full object-cover">
+    </div>
+
+    <div class="prose prose-invert prose-lg max-w-none text-muted">
+        <h2 class="text-3xl font-heading text-text mb-6">Our Philosophy</h2>
+        <p class="mb-8">
+            At Marlow Motors, every vehicle in our inventory is hand-selected. We specialize in low-mileage, premium, and luxury vehicles that have been meticulously maintained. Our goal is to provide a curated selection rather than an overwhelming parking lot.
+        </p>
+        
+        <h2 class="text-3xl font-heading text-text mb-6 mt-12">The 120-Point Standard</h2>
+        <p class="mb-8">
+            We don't just wash a car and put it on the lot. Our certified master technicians perform a rigorous 120-point mechanical and visual inspection on every single vehicle. If a car doesn't meet our exacting standards, we don't sell it. Period.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-12 not-prose">
+            <div class="bg-surface p-8 rounded-xl border border-border">
+                <h3 class="text-2xl font-heading text-text mb-3">Transparency First</h3>
+                <p class="text-muted">We provide comprehensive history reports, upfront pricing with no hidden fees, and clear financing terms for every transaction.</p>
+            </div>
+            <div class="bg-surface p-8 rounded-xl border border-border">
+                <h3 class="text-2xl font-heading text-text mb-3">Aftercare</h3>
+                <p class="text-muted">Your relationship with us doesn't end when you drive off. Enjoy a complimentary 6-month warranty and priority servicing.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

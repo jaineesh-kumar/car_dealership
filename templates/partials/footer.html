@@ -44,8 +44,8 @@
         <div class="mt-16 pt-8 border-t border-border text-sm text-muted flex flex-col md:flex-row justify-between items-center">
             <p>&copy; {% now "Y" %} Marlow Motors. Demo version.</p>
             <div class="mt-4 md:mt-0 space-x-6">
-                <a href="#" class="hover:text-text transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-text transition-colors">Terms of Service</a>
+                <a href="{% url 'privacy' %}" class="hover:text-text transition-colors">Privacy Policy</a>
+                <a href="{% url 'terms' %}" class="hover:text-text transition-colors">Terms of Service</a>
             </div>
         </div>
     </div>
