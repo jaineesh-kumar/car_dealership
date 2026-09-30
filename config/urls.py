@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
+admin.site.site_header = "Marlow Motors Administration"
+admin.site.site_title = "Marlow Motors Admin Portal"
+admin.site.index_title = "Dealership Management System"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('style-guide/', TemplateView.as_view(template_name='style_guide.html'), name='style_guide'),

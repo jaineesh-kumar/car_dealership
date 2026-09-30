@@ -1,0 +1,84 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    :root, [data-theme="light"], [data-theme="dark"] {
+        --primary: #7DB8FF;
+        --secondary: #101216;
+        --header-bg: #07080A;
+        --header-color: #EDEEF0;
+        --header-link-color: #7DB8FF;
+        --button-bg: #7DB8FF;
+        --button-fg: #07080A;
+        --button-hover-bg: #5a9ce5;
+    }
+    
+    [data-theme="dark"], body {
+        --body-bg: #07080A;
+        --body-fg: #EDEEF0;
+        --body-quiet-color: #8A8F98;
+        --body-loud-color: #ffffff;
+        
+        --darkened-bg: #101216;
+        --selected-bg: #1a1d24;
+        --selected-row: #1a1d24;
+        
+        --border-color: rgba(255,255,255,0.08);
+        
+        background-color: var(--body-bg) !important;
+        color: var(--body-fg) !important;
+    }
+    
+    #header {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 15px 20px;
+    }
+    
+    #site-name a {
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        font-size: 1.2rem;
+    }
+    
+    div.breadcrumbs {
+        background: var(--darkened-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px 20px;
+    }
+    
+    .module h2, .module caption, .inline-group h2 {
+        background: var(--darkened-bg);
+        color: var(--primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 10px 15px;
+    }
+    
+    /* Make inputs look better */
+    input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], input[type=tel], textarea, select, .vTextField {
+        border: 1px solid var(--border-color);
+        background-color: var(--body-bg);
+        border-radius: 4px;
+        padding: 8px 12px;
+        color: var(--body-fg);
+    }
+    
+    input[type=text]:focus, textarea:focus, select:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+</style>
+<script>
+    // Force dark mode
+    document.addEventListener("DOMContentLoaded", function() {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        const themeToggle = document.querySelector('#theme-toggle');
+        if(themeToggle) themeToggle.style.display = 'none';
+    });
+</script>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">MARLOW<span style="color: var(--primary);">MOTORS</span> ADMIN</a></h1>
+{% endblock %}

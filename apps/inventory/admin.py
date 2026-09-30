@@ -21,3 +21,18 @@ class CarAdmin(admin.ModelAdmin):
     search_fields = ('title', 'model', 'variant')
     prepopulated_fields = {'slug': ('title',)}
     inlines = [CarImageInline, CarFeatureInline]
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('title', 'slug', 'brand', 'model', 'variant', 'year')
+        }),
+        ('Pricing & Status', {
+            'fields': ('price', 'status', 'is_featured', 'is_sold')
+        }),
+        ('Specifications', {
+            'fields': ('km_driven', 'fuel', 'transmission', 'owners', 'colour', 'registration_state')
+        }),
+        ('Detailed Description', {
+            'fields': ('description',),
+        }),
+    )
