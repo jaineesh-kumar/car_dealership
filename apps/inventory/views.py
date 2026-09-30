@@ -31,3 +31,10 @@ class CarDetailView(DetailView):
 
     def get_queryset(self):
         return Car.objects.filter(status='published')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['similar_cars'] = Car.objects.filter(
+            brand=self.object.brand, status='published'
+        ).exclude(id=self.object.id)[:4]
+        return context

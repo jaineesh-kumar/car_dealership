@@ -22,6 +22,8 @@
     <div class="bg-surface p-8 md:p-12 rounded-2xl border border-border">
         <form method="POST" action="{% url 'sell_trade' %}">
             {% csrf_token %}
+            <!-- Honeypot -->
+            <input type="text" name="website_url" style="display:none" tabindex="-1" autocomplete="off">
             
             <h3 class="text-2xl font-heading mb-8 border-b border-border pb-4">Personal Details</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">

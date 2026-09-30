@@ -108,6 +108,9 @@
                     <h3 class="text-2xl font-heading mb-6">Interested?</h3>
                     <form action="{% url 'submit_enquiry' car.id %}" method="POST" class="space-y-4">
                         {% csrf_token %}
+                        <!-- Honeypot -->
+                        <input type="text" name="website_url" style="display:none" tabindex="-1" autocomplete="off">
+                        
                         <div>
                             <input type="text" name="name" required class="form-input" placeholder="Your Name">
                         </div>
@@ -153,9 +156,78 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- EMI Estimator -->
+                <div class="bg-surface p-6 rounded-2xl border border-border" x-data="{
+                    price: {{ car.price }},
+                    downPayment: Math.round({{ car.price }} * 0.2),
+                    months: 60,
+                    interestRate: 8.5,
+                    get emi() {
+                        const principal = this.price - this.downPayment;
+                        if (principal <= 0) return 0;
+                        const r = (this.interestRate / 100) / 12;
+                        const n = this.months;
+                        if (r === 0) return Math.round(principal / n);
+                        const result = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                        return Math.round(result);
+                    }
+                }">
+                    <h3 class="text-xl font-heading mb-6 flex items-center"><i data-lucide="calculator" class="w-5 h-5 mr-2 text-accent"></i> EMI Estimator</h3>
+                    
+                    <div class="space-y-5">
+                        <div>
+                            <label class="form-label flex justify-between">
+                                Down Payment
+                                <span class="text-text font-medium" x-text="'$' + downPayment.toLocaleString()"></span>
+                            </label>
+                            <input type="range" x-model="downPayment" min="0" :max="price" step="1000" class="w-full accent-accent bg-[#07080A] rounded-lg appearance-none h-2">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label flex justify-between">
+                                Loan Term
+                                <span class="text-text font-medium" x-text="months + ' Months'"></span>
+                            </label>
+                            <input type="range" x-model="months" min="12" max="84" step="12" class="w-full accent-accent bg-[#07080A] rounded-lg appearance-none h-2">
+                        </div>
+                        
+                        <div class="pt-4 border-t border-border mt-2">
+                            <div class="text-sm text-muted mb-1">Estimated Monthly Payment</div>
+                            <div class="text-4xl font-heading text-accent tabular-nums" x-text="'$' + emi.toLocaleString()"></div>
+                            <div class="text-xs text-muted mt-2">Based on <span x-text="interestRate"></span>% APR. Excludes taxes & fees.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Similar Cars -->
+    {% if similar_cars %}
+    <div class="mt-24">
+        <h2 class="text-3xl font-heading mb-8 border-b border-border pb-4">You might also like</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for sim_car in similar_cars %}
+            <a href="{% url 'car_detail' sim_car.slug %}" class="card group block hover:border-muted transition-colors relative">
+                <div class="aspect-[4/3] bg-surface relative overflow-hidden">
+                    {% if sim_car.images.first %}
+                    <img src="{{ sim_car.images.first.image.url }}" alt="{{ sim_car.title }}" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                    {% else %}
+                    <div class="w-full h-full flex items-center justify-center bg-[#101216]">No Image</div>
+                    {% endif %}
+                    <div class="absolute top-3 left-3">
+                        <span class="badge backdrop-blur-md bg-surface/80">${{ sim_car.price }}</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-heading group-hover:text-accent transition-colors truncate">{{ sim_car.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
 

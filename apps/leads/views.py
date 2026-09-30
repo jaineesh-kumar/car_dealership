@@ -5,6 +5,10 @@ from apps.inventory.models import Car
 
 def sell_trade_view(request):
     if request.method == 'POST':
+        # Honeypot check
+        if request.POST.get('website_url'):
+            return redirect('home')
+            
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         brand = request.POST.get('brand')
@@ -20,6 +24,10 @@ def sell_trade_view(request):
 
 def submit_enquiry(request, car_id):
     if request.method == 'POST':
+        # Honeypot check
+        if request.POST.get('website_url'):
+            return redirect('home')
+            
         car = get_object_or_404(Car, id=car_id)
         name = request.POST.get('name')
         phone = request.POST.get('phone')
