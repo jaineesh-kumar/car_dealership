@@ -13,3 +13,11 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # WhiteNoise for Static Files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Database Setup (Uses Render Postgres URL)
+import dj_database_url
+if 'DATABASE_URL' in env:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
