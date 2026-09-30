@@ -4,101 +4,91 @@
 
 {% block content %}
 <div class="section-wrapper">
-    <div class="mb-12">
-        <h1 class="text-4xl md:text-5xl mb-4">Design System</h1>
-        <p class="text-muted max-w-2xl text-lg">
-            This style guide demonstrates the components and typography used across the Marlow Motors demo site.
-            It ensures a consistent, premium, and editorial look.
+    <div class="mb-20">
+        <h1 class="text-8xl mb-8">Design System</h1>
+        <p class="text-muted max-w-2xl text-xl leading-relaxed">
+            Dark theme configuration showcasing typography, components, and layout structures for Marlow Motors.
         </p>
     </div>
     
     <!-- Typography -->
-    <section class="mb-16">
-        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Typography</h2>
-        <div class="space-y-8 bg-surface p-8 rounded border border-gray-200">
+    <section class="mb-24">
+        <h2 class="text-3xl font-heading tracking-tight border-b border-border pb-4 mb-12">Typography</h2>
+        <div class="space-y-12">
             <div>
-                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Heading 1 (Fraunces)</span>
-                <h1 class="text-5xl">The quick brown fox jumps over the lazy dog</h1>
+                <span class="text-sm text-muted uppercase tracking-widest mb-4 block">Display (Archivo 8xl)</span>
+                <h1 class="text-8xl">Premium Cars</h1>
             </div>
             <div>
-                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Heading 2</span>
-                <h2 class="text-4xl">The quick brown fox jumps over the lazy dog</h2>
+                <span class="text-sm text-muted uppercase tracking-widest mb-4 block">Heading 2 (Archivo 5xl)</span>
+                <h2 class="text-5xl">The quick brown fox</h2>
             </div>
             <div>
-                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Heading 3</span>
-                <h3 class="text-3xl">The quick brown fox jumps over the lazy dog</h3>
+                <span class="text-sm text-muted uppercase tracking-widest mb-4 block">Heading 3 (Archivo 3xl)</span>
+                <h3 class="text-3xl">Jumps over the lazy dog</h3>
             </div>
             <div>
-                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Body Text (Instrument Sans)</span>
-                <p class="text-base max-w-3xl leading-relaxed">
+                <span class="text-sm text-muted uppercase tracking-widest mb-4 block">Body Text (Hanken Grotesk)</span>
+                <p class="text-lg max-w-3xl leading-relaxed text-muted">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
-            </div>
-            <div>
-                <span class="text-xs text-muted uppercase tracking-wider mb-2 block">Tabular Figures (Numbers)</span>
-                <p class="text-2xl tabular-nums tracking-tight">$24,990 <span class="text-muted text-lg line-through ml-2">$26,500</span></p>
             </div>
         </div>
     </section>
 
     <!-- Colors -->
-    <section class="mb-16">
-        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Colors</h2>
-        <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+    <section class="mb-24">
+        <h2 class="text-3xl font-heading tracking-tight border-b border-border pb-4 mb-12">Colors</h2>
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
             <div class="flex flex-col">
-                <div class="h-24 rounded border border-gray-200 bg-bone mb-2"></div>
-                <span class="font-medium text-sm">Bone</span>
-                <span class="text-muted text-xs">#F5F2EC</span>
+                <div class="h-24 rounded-lg border border-border bg-[#07080A] mb-3"></div>
+                <span class="font-medium text-sm">Background</span>
+                <span class="text-muted text-xs">#07080A</span>
             </div>
             <div class="flex flex-col">
-                <div class="h-24 rounded border border-gray-200 bg-surface mb-2"></div>
+                <div class="h-24 rounded-lg border border-border bg-[#101216] mb-3"></div>
                 <span class="font-medium text-sm">Surface</span>
-                <span class="text-muted text-xs">#FFFFFF</span>
+                <span class="text-muted text-xs">#101216</span>
             </div>
             <div class="flex flex-col">
-                <div class="h-24 rounded border border-gray-200 bg-ink mb-2"></div>
-                <span class="font-medium text-sm">Ink</span>
-                <span class="text-muted text-xs">#14171A</span>
+                <div class="h-24 rounded-lg border border-border bg-[#EDEEF0] mb-3"></div>
+                <span class="font-medium text-sm text-[#EDEEF0]">Text</span>
+                <span class="text-muted text-xs">#EDEEF0</span>
             </div>
             <div class="flex flex-col">
-                <div class="h-24 rounded border border-gray-200 bg-muted mb-2"></div>
-                <span class="font-medium text-sm">Muted</span>
-                <span class="text-muted text-xs">#5C636A</span>
+                <div class="h-24 rounded-lg border border-border bg-[#8A8F98] mb-3"></div>
+                <span class="font-medium text-sm text-[#8A8F98]">Muted</span>
+                <span class="text-muted text-xs">#8A8F98</span>
             </div>
             <div class="flex flex-col">
-                <div class="h-24 rounded border border-gray-200 bg-copper mb-2"></div>
-                <span class="font-medium text-sm">Copper</span>
-                <span class="text-muted text-xs">#B5562B</span>
-            </div>
-            <div class="flex flex-col">
-                <div class="h-24 rounded border border-gray-200 bg-dark mb-2"></div>
-                <span class="font-medium text-sm">Dark</span>
-                <span class="text-muted text-xs">#14171A</span>
+                <div class="h-24 rounded-lg border border-border bg-[#7DB8FF] mb-3"></div>
+                <span class="font-medium text-sm text-[#7DB8FF]">Accent</span>
+                <span class="text-muted text-xs">#7DB8FF</span>
             </div>
         </div>
     </section>
 
     <!-- Buttons & Badges -->
-    <section class="mb-16">
-        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Buttons & Badges</h2>
-        <div class="flex flex-wrap items-center gap-6 bg-surface p-8 rounded border border-gray-200">
+    <section class="mb-24">
+        <h2 class="text-3xl font-heading tracking-tight border-b border-border pb-4 mb-12">Buttons & Badges</h2>
+        <div class="flex flex-wrap items-center gap-8 bg-surface p-10 rounded-xl border border-border">
             <button class="btn-primary">Primary Button</button>
-            <button class="btn-secondary">Secondary Button</button>
+            <button class="btn-ghost">Ghost Button</button>
             
-            <div class="h-8 w-px bg-gray-300 mx-2"></div>
+            <div class="h-10 w-px bg-border mx-2"></div>
             
             <span class="badge">Featured</span>
-            <span class="badge bg-green-100 text-green-800 border-green-200">Available</span>
-            <span class="badge bg-red-100 text-red-800 border-red-200">Sold</span>
+            <span class="badge text-green-400 border-green-400/20 bg-green-400/10">Available</span>
+            <span class="badge text-red-400 border-red-400/20 bg-red-400/10">Sold</span>
         </div>
     </section>
     
     <!-- Forms -->
-    <section class="mb-16">
-        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Form Elements</h2>
-        <div class="bg-surface p-8 rounded border border-gray-200 max-w-md">
-            <form class="space-y-4">
+    <section class="mb-24">
+        <h2 class="text-3xl font-heading tracking-tight border-b border-border pb-4 mb-12">Form Elements</h2>
+        <div class="bg-surface p-10 rounded-xl border border-border max-w-lg">
+            <form class="space-y-6">
                 <div>
                     <label class="form-label">Full Name</label>
                     <input type="text" class="form-input" placeholder="Jane Doe">
@@ -109,7 +99,7 @@
                 </div>
                 <div>
                     <label class="form-label">Message</label>
-                    <textarea class="form-input" rows="3" placeholder="I'm interested in this car..."></textarea>
+                    <textarea class="form-input" rows="4" placeholder="I'm interested in this car..."></textarea>
                 </div>
                 <button type="button" class="btn-primary w-full">Send Message</button>
             </form>
@@ -117,32 +107,38 @@
     </section>
     
     <!-- Cards -->
-    <section class="mb-16">
-        <h2 class="text-2xl font-bold border-b border-gray-200 pb-2 mb-6">Cards</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section class="mb-24">
+        <h2 class="text-3xl font-heading tracking-tight border-b border-border pb-4 mb-12">Cards</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <!-- Sample Car Card -->
-            <div class="card group cursor-pointer hover:shadow-md transition-shadow">
-                <div class="aspect-[4/3] bg-gray-200 relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt="Car" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute top-2 left-2">
-                        <span class="badge">New Arrival</span>
+            <div class="card group cursor-pointer hover:border-muted transition-colors">
+                <div class="aspect-[4/3] bg-[#101216] relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=800&q=80" alt="Car" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-3 left-3">
+                        <span class="badge backdrop-blur-md bg-surface/80">New Arrival</span>
                     </div>
                 </div>
-                <div class="p-4">
-                    <div class="text-xs text-muted mb-1">2021 • 32,000 km • Petrol</div>
-                    <h3 class="text-lg font-bold mb-2 group-hover:text-copper transition-colors">Honda Civic VXi</h3>
-                    <div class="text-xl tabular-nums font-medium">$22,500</div>
+                <div class="p-6">
+                    <div class="flex items-center text-xs text-muted mb-3 space-x-2">
+                        <span>2021</span>
+                        <span>•</span>
+                        <span>32,000 km</span>
+                        <span>•</span>
+                        <span>Petrol</span>
+                    </div>
+                    <h3 class="text-xl font-heading mb-4 group-hover:text-accent transition-colors">Honda Civic VXi</h3>
+                    <div class="text-2xl font-heading tracking-tight text-text">$22,500</div>
                 </div>
             </div>
             
             <!-- Sample Feature Card -->
-            <div class="card p-6 flex flex-col items-center text-center">
-                <div class="w-12 h-12 rounded-full bg-copper/10 flex items-center justify-center text-copper mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="card p-8 flex flex-col items-start border-border bg-surface hover:bg-border/50 transition-colors">
+                <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-6 border border-accent/20">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
                 </div>
-                <h3 class="text-lg font-bold mb-2">120-Point Inspection</h3>
-                <p class="text-muted text-sm leading-relaxed">Every vehicle is thoroughly checked by certified mechanics before hitting the showroom.</p>
+                <h3 class="text-xl font-heading mb-3">120-Point Inspection</h3>
+                <p class="text-muted text-base leading-relaxed">Every vehicle is thoroughly checked by certified mechanics before hitting the showroom.</p>
             </div>
             
         </div>

@@ -42,7 +42,7 @@ A showcase demo for a local car dealership. Built like a real client project, sh
 ## 3. Tech stack (all free)
 
 - **Backend:** Django (Python), SQLite locally, Postgres when deployed
-- **Frontend:** Django templates + Tailwind CSS (or Bootstrap if you prefer speed, but customise it heavily) + a little vanilla JS. Alpine.js is optional for small interactions. No heavy SPA framework needed.
+- **Frontend:** Django templates + Tailwind CSS + vanilla JS modules. **GSAP + ScrollTrigger** for scroll animation, **Lenis** for smooth scroll, **three.js** for the 3D hero car (or a canvas image sequence, see phase 1b). No SPA framework needed.
 - **Images:** Pillow for resizing/thumbnails, WebP output
 - **Forms:** Django forms with server-side validation, honeypot field for spam
 - **Hosting (free):** Render or PythonAnywhere free tier for the demo link; WhiteNoise for static files
@@ -50,40 +50,45 @@ A showcase demo for a local car dealership. Built like a real client project, sh
 
 ---
 
-## 4. Design direction (this is what stops it looking "vibe coded")
+## 4. Design direction: dark, cinematic, scroll-driven (Apple/Samsung style)
 
-**Personality:** premium, calm, editorial. Closer to a good magazine than a flashy showroom.
+**Personality:** premium product launch page. Dark, quiet, lots of space, one hero object (the car) that moves as the user scrolls.
 
-**Colour (one accent only):**
+**Colour (dark theme, one accent):**
 | Role | Value |
 |---|---|
-| Background | Bone `#F5F2EC` |
-| Surface / cards | White `#FFFFFF` |
-| Text | Ink `#14171A` |
-| Muted text | `#5C636A` |
-| Accent | Copper `#B5562B` |
-| Dark sections | `#14171A` with bone text |
+| Background | Near-black `#07080A` |
+| Surface / cards | `#101216` |
+| Border | `rgba(255,255,255,0.08)` |
+| Text | `#EDEEF0` |
+| Muted text | `#8A8F98` |
+| Accent | Arctic blue `#7DB8FF` (used for buttons, links, price highlights, one soft glow behind the car) |
 
-Rules: no gradients as decoration, no purple/blue glow, accent used only for primary buttons, prices and small highlights.
+Rules: no rainbow gradients. A single soft spotlight behind the car is allowed. Text contrast must stay AA (check muted text on surfaces).
 
-**Typography (two families max):**
-- Headings: **Fraunces** (serif, gives a premium feel)
-- Body/UI: **Instrument Sans**
-- Numbers (price, specs): tabular figures, so columns align
-- Define a type scale once (for example 14 / 16 / 20 / 28 / 40 / 64) and never use random sizes.
+**Typography (two families):**
+- Headings: **Archivo** variable font, expanded width (`font-stretch: 125%`), weight 600 to 800, tight letter-spacing. Wide and confident, very automotive.
+- Body/UI: **Hanken Grotesk** (clean, slightly warmer than Inter)
+- Specs and prices: tabular numbers
+- Big, sparse headlines (64 to 120px on desktop), short lines, lots of empty space. Do not use Inter, Space Grotesk or serif fonts.
 
-**Layout:** 8px spacing grid, generous whitespace, max content width about 1200px, consistent corner radius (pick 4px or 8px, not both), thin 1px borders instead of heavy shadows.
+**Motion system (this is the signature):**
+- Smooth scrolling with **Lenis**, scroll-linked animation with **GSAP ScrollTrigger** (both free).
+- Home hero is a **pinned scroll sequence**: the car rotates/zooms as you scroll while short text panels fade in and out (design, performance, comfort, price).
+- Elsewhere motion is subtle: fade-up on reveal, image parallax, hover states. No bouncing, no confetti.
+- Respect `prefers-reduced-motion`: show static images instead.
+- Mobile gets a lighter version (fewer frames or a static hero) to stay fast.
 
-**Imagery:** consistent aspect ratio on all car photos (4:3 for cards, 16:9 for hero), same crop style.
+**Imagery:** dark-studio style photos, consistent crop, cars lit on dark backgrounds. Cutout PNG/WebP with soft floor reflection looks most premium.
 
-**Copy:** specific and human. Good: "120-point inspection, 6-month warranty." Bad: "Welcome to the future of car buying."
+**Copy:** short, confident, specific. Good: "120-point inspection. 6-month warranty." Bad: "Welcome to the future of car buying."
 
-**Avoid (the AI-template giveaways):**
-- Emoji as icons (use one consistent icon set, like Lucide)
+**Avoid (AI-template giveaways):**
+- Emoji as icons (use Lucide)
 - Three identical rounded cards with icons and filler text
-- Gradient hero with floating blobs
+- Purple/blue gradient blobs
 - "Unlock", "seamless", "elevate" style wording
-- Every section centred, every button pill-shaped
+- Every section centred with the same layout
 
 ---
 
@@ -135,10 +140,18 @@ Each phase ends with a commit and a checklist. Do not start the next phase until
 - **Done when:** the site runs locally and the first commit is pushed
 
 ### Phase 1 — Design system (1 day)
-- Install Tailwind, load fonts, define colour tokens and type scale
-- Build base template, navbar, footer, buttons, inputs, card, badge, section wrapper
-- Make a single `/style-guide/` page showing every component
-- **Done when:** the style guide looks good at 360px and 1440px
+- Install Tailwind, load Archivo + Hanken Grotesk, define the dark colour tokens and type scale
+- Build base template, navbar (transparent over hero, blurred dark when scrolled), footer, buttons, inputs, card, badge, section wrapper
+- Make a single `/style-guide/` page showing every component on the dark theme
+- **Done when:** the style guide feels like a premium dark product site at 360px and 1440px
+
+### Phase 1b — Scroll hero (2 days)
+- Get a free car model (glTF/GLB, check the licence and credit the author) or render frames from it in Blender
+- **Option A (recommended):** three.js scene, GSAP ScrollTrigger pins the section and ties car rotation, camera zoom and text panels to scroll progress
+- **Option B:** 120 to 180 WebP frames drawn on a `<canvas>` by scroll progress (the classic Apple technique), heavier to load
+- Compress the model (gltf-transform + Draco), target under 5 MB, lazy-load it
+- Add a static fallback for mobile and reduced-motion users
+- **Done when:** scrolling feels smooth at 60fps on a mid-range phone and the page loads fast
 
 ### Phase 2 — Data and admin (1 day)
 - Models, migrations, customised admin (list filters, search, inline image upload)

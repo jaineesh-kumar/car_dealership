@@ -1,62 +1,62 @@
-@import "tailwindcss";
-@source "../../templates";
-@source "../../apps";
-
-@theme {
-  --color-bone: #F5F2EC;
-  --color-surface: #FFFFFF;
-  --color-ink: #14171A;
-  --color-muted: #5C636A;
-  --color-copper: #B5562B;
-  --color-dark: #14171A;
-
-  --font-heading: Fraunces, serif;
-  --font-body: "Instrument Sans", sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-bone text-ink font-body antialiased selection:bg-copper selection:text-white;
+    background-color: #07080A;
+    color: #EDEEF0;
+    @apply font-body antialiased selection:bg-accent selection:text-bg;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-ink;
+    @apply font-heading tracking-tight text-text;
+    font-stretch: 125%;
   }
-  
-  .tabular-nums {
-    font-variant-numeric: tabular-nums;
-  }
+
+  h1 { font-weight: 800; }
+  h2, h3 { font-weight: 700; }
+  h4, h5, h6 { font-weight: 600; }
 }
 
 @layer components {
-  /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-5 py-2.5 bg-copper text-white rounded font-body font-medium transition-colors hover:bg-orange-800 focus:outline-none focus:ring-2 focus:ring-copper focus:ring-offset-2 focus:ring-offset-bone;
-  }
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-5 py-2.5 bg-transparent border border-ink text-ink rounded font-body font-medium transition-colors hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 focus:ring-offset-bone;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-accent text-bg rounded font-heading font-semibold transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg;
   }
   
-  /* Inputs */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-transparent text-text border border-border rounded font-heading font-semibold transition-all hover:bg-surface hover:border-muted focus:outline-none focus:ring-2 focus:ring-muted focus:ring-offset-2 focus:ring-offset-bg;
+  }
+  
   .form-input {
-    @apply w-full px-3 py-2 bg-surface border border-gray-300 rounded text-ink focus:outline-none focus:ring-1 focus:ring-copper focus:border-copper transition-shadow;
+    @apply w-full px-4 py-3 bg-surface border border-border rounded text-text placeholder-muted focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent transition-all;
   }
+  
   .form-label {
-    @apply block text-sm font-medium text-ink mb-1;
+    @apply block text-sm font-medium text-muted mb-2;
   }
   
-  /* Cards */
   .card {
-    @apply bg-surface rounded border border-gray-200 overflow-hidden;
+    @apply bg-surface rounded-lg border border-border overflow-hidden;
   }
   
-  /* Badge */
   .badge {
-    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-ink border border-gray-200;
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-surface border border-border text-muted;
   }
 
-  /* Section Wrapper */
   .section-wrapper {
-    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20;
+    @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
+  }
+
+  .spotlight {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(125, 184, 255, 0.08) 0%, rgba(7, 8, 10, 0) 70%);
+    pointer-events: none;
+    z-index: -1;
   }
 }

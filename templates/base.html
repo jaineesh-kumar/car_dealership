@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-[#07080A]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,104 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600..800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
-    
-    {% block extra_head %}{% endblock %}
+    <!-- Tailwind CSS CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-bg: #07080A;
+        --color-surface: #101216;
+        --color-border: rgba(255,255,255,0.08);
+        --color-text: #EDEEF0;
+        --color-muted: #8A8F98;
+        --color-accent: #7DB8FF;
+
+        --font-heading: "Archivo", sans-serif;
+        --font-body: "Hanken Grotesk", sans-serif;
+      }
+      
+      @layer base {
+        body {
+          background-color: var(--color-bg);
+          color: var(--color-text);
+          @apply font-body antialiased selection:bg-accent selection:text-bg;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+          @apply font-heading tracking-tight text-text;
+          font-stretch: 125%;
+        }
+
+        h1 { font-weight: 800; }
+        h2, h3 { font-weight: 700; }
+        h4, h5, h6 { font-weight: 600; }
+      }
+
+      @layer components {
+        .btn-primary {
+          @apply inline-flex items-center justify-center px-6 py-3 bg-accent text-bg rounded font-heading font-semibold transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg;
+        }
+        
+        .btn-ghost {
+          @apply inline-flex items-center justify-center px-6 py-3 bg-transparent text-text border border-border rounded font-heading font-semibold transition-all hover:bg-surface hover:border-muted focus:outline-none focus:ring-2 focus:ring-muted focus:ring-offset-2 focus:ring-offset-bg;
+        }
+        
+        .form-input {
+          @apply w-full px-4 py-3 bg-surface border border-border rounded text-text placeholder-muted focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent transition-all;
+        }
+        
+        .form-label {
+          @apply block text-sm font-medium text-muted mb-2;
+        }
+        
+        .card {
+          @apply bg-surface rounded-lg border border-border overflow-hidden;
+        }
+        
+        .badge {
+          @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-surface border border-border text-muted;
+        }
+
+        .section-wrapper {
+          @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
+        }
+
+        .spotlight {
+          position: absolute;
+          top: -20%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 800px;
+          height: 800px;
+          background: radial-gradient(circle, rgba(125, 184, 255, 0.08) 0%, rgba(7, 8, 10, 0) 70%);
+          pointer-events: none;
+          z-index: -1;
+        }
+      }
+    </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen relative overflow-x-hidden">
+    <!-- Spotlight glow -->
+    <div class="spotlight"></div>
+
     {% include 'partials/navbar.html' %}
     
-    <main class="flex-grow">
+    <main class="flex-grow pt-20">
         {% block content %}{% endblock %}
     </main>
     
     {% include 'partials/footer.html' %}
     
-    <!-- Optional Alpine.js for interactions -->
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
     {% block extra_scripts %}{% endblock %}
 </body>
 </html>
